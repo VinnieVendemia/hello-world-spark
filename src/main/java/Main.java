@@ -11,5 +11,11 @@ public class Main {
 	     get("/hello/:name", (request, response) -> {
 	         return "Hello: " + request.params(":name");
 	     });
+	     
+		  // matches "GET /say/hello/to/world"
+		  // request.splat()[0] is 'hello' and request.splat()[1] 'world'
+		  get("/say/*/to/*", (request, response) -> {
+		      return "Number of splat parameters: " + request.splat().length;
+		  });
     }
 }
